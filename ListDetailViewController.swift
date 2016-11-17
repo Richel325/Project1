@@ -24,10 +24,6 @@ class ListDetailViewController: UIViewController {
         
         ToDoItem.text = item.name
         ItemDescriptionDetail.text = item.description
-//        guard let text = ItemDescriptionDetail.text, !text.isEmpty else {
-//            return
-//        }
-//        text.characters.count
     }
     
     
@@ -36,7 +32,7 @@ class ListDetailViewController: UIViewController {
         guard let item = currentItem else { return }
         
         ToDoItem.text = item.name
-        ItemDescriptionDetail.text = item.description
+        item.description = ItemDescriptionDetail.text
     }
     
     
