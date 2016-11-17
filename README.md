@@ -8,4 +8,6 @@ In this simple, straightforward list-building app, a user can:
 
 3) Add a detailed description to each task 
 
+4) Delete both lists and tasks
+
 Keep track of all your chores, grocery lists, exercise routines, and more!
