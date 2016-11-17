@@ -24,8 +24,19 @@ class ListDetailViewController: UIViewController {
         
         ToDoItem.text = item.name
         ItemDescriptionDetail.text = item.description
-
-  
+//        guard let text = ItemDescriptionDetail.text, !text.isEmpty else {
+//            return
+//        }
+//        text.characters.count
+    }
+    
+    
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        guard let item = currentItem else { return }
+        
+        ToDoItem.text = item.name
+        ItemDescriptionDetail.text = item.description
     }
     
     

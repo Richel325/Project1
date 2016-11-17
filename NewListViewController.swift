@@ -11,17 +11,19 @@ import UIKit
 class NewListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var NewListTableView: UITableView!
-    @IBOutlet weak var newListItemLabel: UILabel!
+    @IBOutlet weak var NewListItem: UITextField!
+
     
     @IBAction func NewItemInList(_ sender: UIButton) {
-        let newListItem = List(name: newListItemLabel.text!, description: "")
+        let newListItem = List(name: NewListItem.text!, description: "")
         DataController.sharedinstance.newItem.append(newListItem)
-        newListItemLabel.resignFirstResponder()
+        NewListItem.resignFirstResponder()
         NewListTableView.reloadData()
+        
     }
     
-
-
+    
+    
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -30,23 +32,33 @@ class NewListViewController: UIViewController, UITableViewDataSource, UITableVie
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let itemCell = tableView.dequeueReusableCell(withIdentifier: "itemCell", for: indexPath)
+        let itemCell = tableView.dequeueReusableCell(withIdentifier: "itemCell", for: indexPath) as! NewListTableViewCell
         let myRow = indexPath.row
-        let newListItem = DataController.sharedinstance.newItem[myRow]
+        let nameOfNewItem = DataController.sharedinstance.newItem[myRow]
+        itemCell.newListItemCellLabel.text = nameOfNewItem.name
+        
         
         if indexPath.row % 2 == 0 {
-            itemCell.backgroundColor = UIColor.lightGray
+        itemCell.backgroundColor = UIColor.lightGray
+        
+        }
+    return itemCell
     }
-        return itemCell
+
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            DataController.sharedinstance.newItem.remove(at: indexPath.row)
+            NewListTableView.reloadData()
+        }
     }
     
         var currentListItem: List?
         
-     override func viewDidLoad() {
+    override func viewDidLoad() {
             super.viewDidLoad()
-            
+        
             guard let item = currentListItem else { return }
-            newListItemLabel.text = item.name
+            NewListItem.text = item.name
         }
         
        override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

@@ -11,12 +11,13 @@ import UIKit
 class ListOfListsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var ListOfListsTableView: UITableView!
-    @IBOutlet weak var newListLabel: UILabel!
+    @IBOutlet weak var ListName: UITextField!
+    
     
     @IBAction func NewListButton(_ sender: UIButton) {
-        let newList = List(name: newListLabel.text!, description: "")
+        let newList = List(name: ListName.text!, description: "")
         DataController.sharedinstance.list.append(newList)
-        newListLabel.resignFirstResponder()
+        ListName.resignFirstResponder()
         ListOfListsTableView.reloadData()
     }
     
@@ -25,34 +26,33 @@ class ListOfListsViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let listCell = tableView.dequeueReusableCell(withIdentifier: "listCell", for: indexPath)
+        let listCell = tableView.dequeueReusableCell(withIdentifier: "listCell", for: indexPath) as! ListOfListsTableViewCell
         
         let myRow = indexPath.row
-        let list = DataController.sharedinstance.list[myRow]
+        let nameOfList = DataController.sharedinstance.list[myRow]
         
-        return listCell
-        //code in here for if statement to make every other row light gray instead of white using "list" from above
+        listCell.textLabel?.text = nameOfList.name
+        
         if indexPath.row % 2 == 0 {
             listCell.backgroundColor = UIColor.lightGray
         }
         
+        return listCell
         
-//        var currentList: List?
-        
-     func viewDidLoad() {
-            super.viewDidLoad()
-            
-//            guard let item = currentList else { return }
-//            newListLabel.text = item.name
-//            
-//            func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//                if segue.identifier == "newListToListItem" {
-//                    let listViewController = segue.destination as! ListOfListsViewController
-//                    let index = ListOfListsTableView.indexPathForSelectedRow?.row
-//                    let listLine = DataController.sharedinstance.list[index!]
-//                    listViewController.currentList = listLine
-                }
-                
-            }
-            
+    }
+    
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            DataController.sharedinstance.list.remove(at: indexPath.row)
+            ListOfListsTableView.reloadData()
         }
+    }
+    
+    override func viewDidLoad() {
+            super.viewDidLoad()
+        }
+        
+    }
+    
+

@@ -1,0 +1,27 @@
+//
+//  NewListTableViewCell.swift
+//  To Do List Project 1
+//
+//  Created by Richel Cuyler on 11/16/16.
+//  Copyright © 2016 Richel Cuyler. All rights reserved.
+//
+
+import UIKit
+
+class NewListTableViewCell: UITableViewCell {
+
+    @IBOutlet weak var newListItemCellLabel: UILabel!
+    
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Initialization code
+    }
+
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+
+        // Configure the view for the selected state
+    }
+
+}

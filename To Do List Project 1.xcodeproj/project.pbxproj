@@ -17,6 +17,8 @@
 		0C0241E21DDCA6D20095EAF4 /* ListDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C0241E11DDCA6D20095EAF4 /* ListDetailViewController.swift */; };
 		0C0241E81DDCAB340095EAF4 /* List.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C0241E71DDCAB340095EAF4 /* List.swift */; };
 		0C0241EA1DDCAD740095EAF4 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C0241E91DDCAD740095EAF4 /* DataController.swift */; };
+		0C9F2F091DDCFE6000361041 /* ListOfListsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9F2F081DDCFE6000361041 /* ListOfListsTableViewCell.swift */; };
+		0C9F2F0B1DDCFF7400361041 /* NewListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9F2F0A1DDCFF7400361041 /* NewListTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		0C0241E11DDCA6D20095EAF4 /* ListDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListDetailViewController.swift; sourceTree = "<group>"; };
 		0C0241E71DDCAB340095EAF4 /* List.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = List.swift; sourceTree = "<group>"; };
 		0C0241E91DDCAD740095EAF4 /* DataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
+		0C9F2F081DDCFE6000361041 /* ListOfListsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListOfListsTableViewCell.swift; sourceTree = "<group>"; };
+		0C9F2F0A1DDCFF7400361041 /* NewListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewListTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,7 +101,9 @@
 			children = (
 				0C0241C51DDCA2420095EAF4 /* AppDelegate.swift */,
 				0C0241DD1DDCA65D0095EAF4 /* ListOfListsViewController.swift */,
+				0C9F2F081DDCFE6000361041 /* ListOfListsTableViewCell.swift */,
 				0C0241DF1DDCA6910095EAF4 /* NewListViewController.swift */,
+				0C9F2F0A1DDCFF7400361041 /* NewListTableViewCell.swift */,
 				0C0241E11DDCA6D20095EAF4 /* ListDetailViewController.swift */,
 			);
 			name = Logic;
@@ -192,6 +198,8 @@
 				0C0241E81DDCAB340095EAF4 /* List.swift in Sources */,
 				0C0241DE1DDCA65D0095EAF4 /* ListOfListsViewController.swift in Sources */,
 				0C0241EA1DDCAD740095EAF4 /* DataController.swift in Sources */,
+				0C9F2F091DDCFE6000361041 /* ListOfListsTableViewCell.swift in Sources */,
+				0C9F2F0B1DDCFF7400361041 /* NewListTableViewCell.swift in Sources */,
 				0C0241E21DDCA6D20095EAF4 /* ListDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -358,6 +366,7 @@
 				0C0241D61DDCA2420095EAF4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
