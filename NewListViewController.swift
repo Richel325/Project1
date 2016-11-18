@@ -13,61 +13,61 @@ class NewListViewController: UIViewController, UITableViewDataSource, UITableVie
     @IBOutlet weak var NewListTableView: UITableView!
     @IBOutlet weak var NewListItem: UITextField!
 
+    var list: List!
     
     @IBAction func NewItemInList(_ sender: UIButton) {
-        let newListItem = List(name: NewListItem.text!, description: "")
-        DataController.sharedinstance.newItem.append(newListItem)
+        let newListItem = Task(taskName: NewListItem.text!, taskDescription: "")
+        list.tasks.append(newListItem)
         NewListItem.resignFirstResponder()
+        NewListItem.text = ""
         NewListTableView.reloadData()
-        
     }
-    
-    
     
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return DataController.sharedinstance.newItem.count
+        return list.tasks.count
     }
+    
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let itemCell = tableView.dequeueReusableCell(withIdentifier: "itemCell", for: indexPath) as! NewListTableViewCell
         let myRow = indexPath.row
-        let nameOfNewItem = DataController.sharedinstance.newItem[myRow]
-        itemCell.newListItemCellLabel.text = nameOfNewItem.name
-        
-        
+        let nameOfNewItem = list.tasks[myRow]
+        itemCell.newListItemCellLabel.text = nameOfNewItem.taskName
         if indexPath.row % 2 == 0 {
         itemCell.backgroundColor = UIColor.lightGray
-        
         }
     return itemCell
     }
 
+    
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            DataController.sharedinstance.newItem.remove(at: indexPath.row)
+            list.tasks.remove(at: indexPath.row)
             NewListTableView.reloadData()
         }
     }
     
-        var currentListItem: List?
-        
+    
+    
+    var currentListItem: Task?
+    
     override func viewDidLoad() {
-            super.viewDidLoad()
+        super.viewDidLoad()
+        guard let item = currentListItem else { return }
+        NewListItem.text = item.taskName
         
-            guard let item = currentListItem else { return }
-            NewListItem.text = item.name
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "newItemCellToListDetail" {
+            let itemDetailViewController = segue.destination as! ListDetailViewController
+            let index = NewListTableView.indexPathForSelectedRow?.row
+            let listItem = list.tasks[index!]
+            itemDetailViewController.currentItem = listItem
         }
-        
-       override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-            if segue.identifier == "newItemCellToListDetail" {
-                let itemDetailViewController = segue.destination as! ListDetailViewController
-                let index = NewListTableView.indexPathForSelectedRow?.row
-                let listItem = DataController.sharedinstance.newItem[index!]
-                itemDetailViewController.currentItem = listItem
-            }
-}
-
+    }
+    
 }

@@ -14,7 +14,7 @@ class ListDetailViewController: UIViewController {
     @IBOutlet weak var ItemDescriptionDetail: UITextView!
     
     
-    var currentItem: List?
+    var currentItem: Task?
     
     
     override func viewDidLoad() {
@@ -22,8 +22,8 @@ class ListDetailViewController: UIViewController {
         
         guard let item = currentItem else { return }
         
-        ToDoItem.text = item.name
-        ItemDescriptionDetail.text = item.description
+        ToDoItem.text = item.taskName
+        ItemDescriptionDetail.text = item.taskDescription
     }
     
     
@@ -31,8 +31,8 @@ class ListDetailViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         guard let item = currentItem else { return }
         
-        ToDoItem.text = item.name
-        item.description = ItemDescriptionDetail.text
+        ToDoItem.text = item.taskName
+        item.taskDescription = ItemDescriptionDetail.text
     }
     
     

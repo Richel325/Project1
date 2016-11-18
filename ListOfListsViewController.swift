@@ -15,44 +15,56 @@ class ListOfListsViewController: UIViewController, UITableViewDataSource, UITabl
     
     
     @IBAction func NewListButton(_ sender: UIButton) {
-        let newList = List(name: ListName.text!, description: "")
-        DataController.sharedinstance.list.append(newList)
+        let newList = List(listName: ListName.text!)
+        toDoLists.append(newList)
         ListName.resignFirstResponder()
+        ListName.text = ""
         ListOfListsTableView.reloadData()
     }
     
+    
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return DataController.sharedinstance.list.count
+        return toDoLists.count
     }
+    
+    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let listCell = tableView.dequeueReusableCell(withIdentifier: "listCell", for: indexPath) as! ListOfListsTableViewCell
         
         let myRow = indexPath.row
-        let nameOfList = DataController.sharedinstance.list[myRow]
+        let nameOfList = toDoLists[myRow]
         
-        listCell.textLabel?.text = nameOfList.name
+        listCell.textLabel?.text = nameOfList.listName
         
         if indexPath.row % 2 == 0 {
             listCell.backgroundColor = UIColor.lightGray
         }
-        
         return listCell
-        
     }
+    
     
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            DataController.sharedinstance.list.remove(at: indexPath.row)
+            toDoLists.remove(at: indexPath.row)
             ListOfListsTableView.reloadData()
         }
     }
     
-    override func viewDidLoad() {
-            super.viewDidLoad()
-        }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
+        let listVC = segue.destination as! NewListViewController
+        listVC.list = toDoLists[ListOfListsTableView.indexPathForSelectedRow!.row]
     }
     
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
+}
+
 
