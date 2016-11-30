@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1108" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="dPi-YH-9JU">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15G1108" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="dPi-YH-9JU">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -19,7 +23,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hog-cD-Nsb">
-                                <frame key="frameInset" minX="264" minY="72" width="40" height="36"/>
+                                <rect key="frame" x="264" y="72" width="40" height="36"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button" image="todolisticon.png"/>
                                 <connections>
@@ -27,15 +31,15 @@
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="FcH-PF-CP5" userLabel="ListOfListsTableView" customClass="ListOfListsTableView">
-                                <frame key="frameInset" minY="147" width="320" height="421"/>
+                                <rect key="frame" x="0.0" y="147" width="320" height="421"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="listCell" editingAccessoryType="checkmark" id="GNW-Ma-g11" userLabel="listCell" customClass="ListOfListsTableViewCell" customModule="To_Do_List_Project_1" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="listCell" editingAccessoryType="checkmark" rowHeight="44" id="GNW-Ma-g11" userLabel="listCell" customClass="ListOfListsTableViewCell" customModule="To_Do_List_Project_1" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GNW-Ma-g11" id="ETP-yF-HcP">
-                                            <frame key="frameInset" width="320" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <connections>
@@ -49,7 +53,7 @@
                                 </connections>
                             </tableView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="New List" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="BPc-wB-T3i">
-                                <frame key="frameInset" minX="16" minY="78" width="240" height="30"/>
+                                <rect key="frame" x="16" y="78" width="240" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -80,34 +84,33 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i5E-bE-r8B">
-                                <frame key="frameInset" minX="264" minY="67" width="40" height="36"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button" image="todolisticon.png"/>
-                                <connections>
-                                    <action selector="NewItemInList:" destination="tCC-9P-bNe" eventType="touchUpInside" id="KPv-xj-wRc"/>
-                                </connections>
-                            </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="YaW-7a-VFd" userLabel="NewListTableView" customClass="NewListTableView">
-                                <frame key="frameInset" minY="141" width="320" height="427"/>
+                                <rect key="frame" x="0.0" y="141" width="414" height="595"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="itemCell" editingAccessoryType="checkmark" id="YSX-Lt-9ly" customClass="NewListTableViewCell" customModule="To_Do_List_Project_1" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="320" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="itemCell" editingAccessoryType="checkmark" rowHeight="44" id="YSX-Lt-9ly" customClass="NewListTableViewCell" customModule="To_Do_List_Project_1" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YSX-Lt-9ly" id="o9b-ih-FGR">
-                                            <frame key="frameInset" width="320" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kCJ-Sh-nip">
-                                                    <frame key="frameInset" minX="8" minY="11" width="204" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kCJ-Sh-nip">
+                                                    <rect key="frame" x="8" y="11" width="204" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="204" id="1he-qX-Eoo"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="kCJ-Sh-nip" firstAttribute="leading" secondItem="o9b-ih-FGR" secondAttribute="leadingMargin" id="5DW-N1-VIW"/>
+                                                <constraint firstItem="kCJ-Sh-nip" firstAttribute="top" secondItem="o9b-ih-FGR" secondAttribute="topMargin" constant="3" id="9HM-n0-MvN"/>
+                                                <constraint firstItem="kCJ-Sh-nip" firstAttribute="centerY" secondItem="o9b-ih-FGR" secondAttribute="centerY" id="Om8-KV-DrJ"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="newListItemCellLabel" destination="kCJ-Sh-nip" id="YTu-zi-jFe"/>
@@ -121,12 +124,20 @@
                                 </connections>
                             </tableView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="New Item" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="VTQ-l8-8z6">
-                                <frame key="frameInset" minX="16" minY="73" width="240" height="30"/>
+                                <rect key="frame" x="20" y="78" width="240" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i5E-bE-r8B">
+                                <rect key="frame" x="268" y="72" width="40" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="todolisticon.png"/>
+                                <connections>
+                                    <action selector="NewItemInList:" destination="tCC-9P-bNe" eventType="touchUpInside" id="KPv-xj-wRc"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -151,22 +162,32 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="To Do Item " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RKH-BF-c2d">
-                                <frame key="frameInset" minX="16" minY="72" width="288" height="72"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To Do Item " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RKH-BF-c2d">
+                                <rect key="frame" x="23" y="72" width="274" height="72"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="72" id="ljG-jU-OeE"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" keyboardDismissMode="interactive" text="Item Details Here..." translatesAutoresizingMaskIntoConstraints="NO" id="rBT-Qo-jN2" userLabel="ItemDescriptionDetail">
-                                <frame key="frameInset" minX="16" minY="152" width="288" height="396"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="interactive" text="Item Details Here..." translatesAutoresizingMaskIntoConstraints="NO" id="rBT-Qo-jN2" userLabel="ItemDescriptionDetail">
+                                <rect key="frame" x="23" y="153" width="274" height="395"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="RKH-BF-c2d" firstAttribute="leading" secondItem="rBT-Qo-jN2" secondAttribute="leading" id="ANj-5W-i0d"/>
+                            <constraint firstItem="RKH-BF-c2d" firstAttribute="leading" secondItem="Lee-cs-zK5" secondAttribute="leadingMargin" constant="7" id="BaC-Ze-bmS"/>
+                            <constraint firstItem="rBT-Qo-jN2" firstAttribute="top" secondItem="RKH-BF-c2d" secondAttribute="bottom" constant="9" id="Fsw-tb-2se"/>
+                            <constraint firstItem="RKH-BF-c2d" firstAttribute="centerX" secondItem="Lee-cs-zK5" secondAttribute="centerX" id="OEe-c8-Cp2"/>
+                            <constraint firstItem="RKH-BF-c2d" firstAttribute="trailing" secondItem="rBT-Qo-jN2" secondAttribute="trailing" id="buC-To-SWY"/>
+                            <constraint firstItem="RKH-BF-c2d" firstAttribute="top" secondItem="gyC-33-vSB" secondAttribute="bottom" constant="8" symbolic="YES" id="crN-nb-rLh"/>
+                            <constraint firstAttribute="bottom" secondItem="rBT-Qo-jN2" secondAttribute="bottom" constant="20" symbolic="YES" id="nZ5-j7-604"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="ItemDescriptionDetail" destination="rBT-Qo-jN2" id="dq7-In-zyy"/>
