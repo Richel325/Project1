@@ -22,17 +22,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hog-cD-Nsb">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hog-cD-Nsb">
                                 <rect key="frame" x="264" y="72" width="40" height="36"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="iPW-2h-aq7"/>
+                                    <constraint firstAttribute="width" constant="40" id="vcd-mW-hGH"/>
+                                </constraints>
                                 <state key="normal" title="Button" image="todolisticon.png"/>
                                 <connections>
                                     <action selector="NewListButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="eEq-N2-xui"/>
                                 </connections>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="FcH-PF-CP5" userLabel="ListOfListsTableView" customClass="ListOfListsTableView">
-                                <rect key="frame" x="0.0" y="147" width="320" height="421"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="FcH-PF-CP5" userLabel="ListOfListsTableView" customClass="ListOfListsTableView">
+                                <rect key="frame" x="0.0" y="141" width="320" height="427"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="listCell" editingAccessoryType="checkmark" rowHeight="44" id="GNW-Ma-g11" userLabel="listCell" customClass="ListOfListsTableViewCell" customModule="To_Do_List_Project_1" customModuleProvider="target">
@@ -52,15 +54,28 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="c9S-b4-clW"/>
                                 </connections>
                             </tableView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="New List" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="BPc-wB-T3i">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="New List" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="BPc-wB-T3i">
                                 <rect key="frame" x="16" y="78" width="240" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="FcH-PF-CP5" secondAttribute="trailing" id="1AI-Ed-8zI"/>
+                            <constraint firstItem="FcH-PF-CP5" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="CBm-0D-NXd"/>
+                            <constraint firstItem="hog-cD-Nsb" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="DCz-L0-uXN"/>
+                            <constraint firstItem="hog-cD-Nsb" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" symbolic="YES" id="K7X-0f-ANd"/>
+                            <constraint firstItem="FcH-PF-CP5" firstAttribute="top" secondItem="BPc-wB-T3i" secondAttribute="bottom" constant="33" id="MnC-0k-DaD"/>
+                            <constraint firstItem="BPc-wB-T3i" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="Qix-f7-dxt"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="FcH-PF-CP5" secondAttribute="bottom" id="RB7-4I-cC0"/>
+                            <constraint firstItem="hog-cD-Nsb" firstAttribute="leading" secondItem="BPc-wB-T3i" secondAttribute="trailing" constant="8" symbolic="YES" id="Rcf-tj-kyc"/>
+                            <constraint firstItem="hog-cD-Nsb" firstAttribute="bottom" secondItem="BPc-wB-T3i" secondAttribute="bottom" id="X2C-YX-r5H"/>
+                            <constraint firstItem="FcH-PF-CP5" firstAttribute="top" secondItem="hog-cD-Nsb" secondAttribute="bottom" constant="33" id="dXL-XX-H80"/>
+                            <constraint firstItem="hog-cD-Nsb" firstAttribute="leading" secondItem="BPc-wB-T3i" secondAttribute="trailing" constant="8" id="lUA-y8-VYX"/>
+                            <constraint firstItem="BPc-wB-T3i" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="14" id="sFg-Vy-jtj"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="47A-La-1n1"/>
                     <connections>
@@ -70,7 +85,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1076" y="132"/>
+            <point key="canvasLocation" x="1074.375" y="130.98591549295776"/>
         </scene>
         <!--NewListViewController-->
         <scene sceneID="TLe-x1-Bf4">
@@ -84,16 +99,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="YaW-7a-VFd" userLabel="NewListTableView" customClass="NewListTableView">
-                                <rect key="frame" x="0.0" y="141" width="414" height="595"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="YaW-7a-VFd" userLabel="NewListTableView" customClass="NewListTableView">
+                                <rect key="frame" x="0.0" y="141" width="320" height="427"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="itemCell" editingAccessoryType="checkmark" rowHeight="44" id="YSX-Lt-9ly" customClass="NewListTableViewCell" customModule="To_Do_List_Project_1" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YSX-Lt-9ly" id="o9b-ih-FGR">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kCJ-Sh-nip">
@@ -123,16 +137,18 @@
                                     <outlet property="delegate" destination="tCC-9P-bNe" id="Su5-td-ALG"/>
                                 </connections>
                             </tableView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="New Item" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="VTQ-l8-8z6">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="New Item" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="VTQ-l8-8z6">
                                 <rect key="frame" x="20" y="78" width="240" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i5E-bE-r8B">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i5E-bE-r8B">
                                 <rect key="frame" x="268" y="72" width="40" height="36"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="DrC-E1-C0u"/>
+                                    <constraint firstAttribute="width" constant="40" id="IyY-Az-IlS"/>
+                                </constraints>
                                 <state key="normal" title="Button" image="todolisticon.png"/>
                                 <connections>
                                     <action selector="NewItemInList:" destination="tCC-9P-bNe" eventType="touchUpInside" id="KPv-xj-wRc"/>
@@ -140,6 +156,18 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="i5E-bE-r8B" firstAttribute="top" secondItem="9xs-YV-ZiY" secondAttribute="bottom" constant="8" symbolic="YES" id="6Yq-IX-m1K"/>
+                            <constraint firstItem="VTQ-l8-8z6" firstAttribute="top" secondItem="9xs-YV-ZiY" secondAttribute="bottom" constant="14" id="D2s-mF-uOX"/>
+                            <constraint firstItem="VTQ-l8-8z6" firstAttribute="leading" secondItem="OgC-2i-AQ2" secondAttribute="leadingMargin" constant="4" id="E2g-Jw-eoV"/>
+                            <constraint firstItem="YaW-7a-VFd" firstAttribute="top" secondItem="i5E-bE-r8B" secondAttribute="bottom" constant="33" id="HUH-BM-4F2"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="i5E-bE-r8B" secondAttribute="trailing" constant="-4" id="LyM-1f-iWA"/>
+                            <constraint firstItem="i5E-bE-r8B" firstAttribute="leading" secondItem="VTQ-l8-8z6" secondAttribute="trailing" constant="8" id="MKN-bY-UPT"/>
+                            <constraint firstItem="YaW-7a-VFd" firstAttribute="leading" secondItem="OgC-2i-AQ2" secondAttribute="leading" id="OrN-2S-BiV"/>
+                            <constraint firstItem="Q1p-U0-syl" firstAttribute="top" secondItem="YaW-7a-VFd" secondAttribute="bottom" id="iJN-Tv-Xm9"/>
+                            <constraint firstItem="YaW-7a-VFd" firstAttribute="top" secondItem="VTQ-l8-8z6" secondAttribute="bottom" constant="33" id="mbm-Bo-SmN"/>
+                            <constraint firstAttribute="trailing" secondItem="YaW-7a-VFd" secondAttribute="trailing" id="n6S-Wh-D8V"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="NewListItem" destination="VTQ-l8-8z6" id="pqt-Zs-icp"/>
@@ -148,7 +176,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UIA-wB-C6J" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1978" y="131"/>
+            <point key="canvasLocation" x="1976.25" y="130.98591549295776"/>
         </scene>
         <!--ListDetailViewController-->
         <scene sceneID="rxa-Ks-Xuz">
