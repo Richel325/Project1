@@ -19,6 +19,7 @@ class NewListViewController: UIViewController, UITableViewDataSource, UITableVie
         let newListItem = Task(taskName: NewListItem.text!, taskDescription: "")
         list.tasks.append(newListItem)
         NewListItem.resignFirstResponder()
+        Model.shared.persistListsToDefaults()
         NewListItem.text = ""
         NewListTableView.reloadData()
     }
@@ -46,6 +47,7 @@ class NewListViewController: UIViewController, UITableViewDataSource, UITableVie
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             list.tasks.remove(at: indexPath.row)
+            Model.shared.persistListsToDefaults()
             NewListTableView.reloadData()
         }
     }
@@ -58,7 +60,7 @@ class NewListViewController: UIViewController, UITableViewDataSource, UITableVie
         super.viewDidLoad()
         guard let item = currentListItem else { return }
         NewListItem.text = item.taskName
-        
+        Model.shared.loadPersistedListsFromDefaults()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -71,3 +73,4 @@ class NewListViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
 }
+

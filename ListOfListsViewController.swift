@@ -17,6 +17,7 @@ class ListOfListsViewController: UIViewController, UITableViewDataSource, UITabl
     @IBAction func NewListButton(_ sender: UIButton) {
         let newList = List(listName: ListName.text!)
         toDoLists.append(newList)
+        Model.shared.persistListsToDefaults()
         ListName.resignFirstResponder()
         ListName.text = ""
         ListOfListsTableView.reloadData()
@@ -49,6 +50,7 @@ class ListOfListsViewController: UIViewController, UITableViewDataSource, UITabl
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             toDoLists.remove(at: indexPath.row)
+            Model.shared.persistListsToDefaults()
             ListOfListsTableView.reloadData()
         }
     }
@@ -63,6 +65,7 @@ class ListOfListsViewController: UIViewController, UITableViewDataSource, UITabl
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        Model.shared.loadPersistedListsFromDefaults()
     }
     
 }
