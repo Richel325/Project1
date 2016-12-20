@@ -8,11 +8,12 @@
 
 import Foundation
 import UIKit
+import Firebase
 
 class Model {
     
     static let shared = Model()
-    private init () {}
+    private init (){}
     
     let key = "persisted-list"
     func persistListsToDefaults() {
@@ -57,6 +58,7 @@ class List: NSObject, NSCoding {
 var toDoLists = [List]()
 
 
+
 class Task: NSObject, NSCoding {
     
     private struct Keys {
@@ -66,22 +68,62 @@ class Task: NSObject, NSCoding {
     
     var taskName: String
     var taskDescription: String
+    var date: String
+    var ref: FIRDatabaseReference?
     
-    init(taskName: String, taskDescription: String) {
+    init(taskName: String, taskDescription: String, date: String = "") {
         self.taskName = taskName
         self.taskDescription = taskDescription
+        self.date = date
     }
+    
+    init(snapshot: FIRDataSnapshot) {
+        taskName = snapshot.key
+        let snapshotValue = snapshot.value as! [String: AnyObject]
+        taskDescription = snapshotValue["taskDescription"] as! String
+        date = snapshotValue["date"] as! String
+        ref = snapshot.ref
+    }
+    
+    func toAnyObject() -> Any {
+        return [
+            "taskDescription": taskDescription,
+            "date": date
+        ]
+    }
+    
     
     required convenience init?(coder aDecoder: NSCoder) {
         self.init(
-        taskName: aDecoder.decodeObject(forKey: Keys.taskName) as! String,
-        taskDescription: aDecoder.decodeObject(forKey: Keys.taskDescription) as! String
-    )
-}
+            taskName: aDecoder.decodeObject(forKey: Keys.taskName) as! String,
+            taskDescription: aDecoder.decodeObject(forKey: Keys.taskDescription) as! String
+        )
+    }
     
     func encode(with aCoder: NSCoder) {
         aCoder.encode(taskName, forKey: Keys.taskName)
         aCoder.encode(taskDescription, forKey: Keys.taskDescription)
     }
-    
 }
+
+
+
+
+extension Date {
+    
+    func format() -> String {
+        return Format.shared.dateFormatter.string(from: self)
+    }
+}
+
+class Format {
+    
+    static let shared = Format()
+    let dateFormatter = DateFormatter()
+    private init() {
+        dateFormatter.dateStyle = .long
+        dateFormatter.timeStyle = .long
+    }
+}
+
+

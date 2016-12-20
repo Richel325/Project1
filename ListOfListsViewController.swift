@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class ListOfListsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
@@ -17,13 +18,17 @@ class ListOfListsViewController: UIViewController, UITableViewDataSource, UITabl
     @IBAction func NewListButton(_ sender: UIButton) {
         let newList = List(listName: ListName.text!)
         toDoLists.append(newList)
-        Model.shared.persistListsToDefaults()
+        //Model.shared.persistListsToDefaults()
         ListName.resignFirstResponder()
         ListName.text = ""
         ListOfListsTableView.reloadData()
+        
+        //        let firstList = lists.first!
+        //
+        //updateList(newTitle: "Vocal Exercises", newDescription: "Lip Trills", lists: firstList)
     }
     
-    
+    //var lists = [Task]()
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return toDoLists.count
@@ -50,7 +55,7 @@ class ListOfListsViewController: UIViewController, UITableViewDataSource, UITabl
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             toDoLists.remove(at: indexPath.row)
-            Model.shared.persistListsToDefaults()
+            //Model.shared.persistListsToDefaults()
             ListOfListsTableView.reloadData()
         }
     }
@@ -62,10 +67,54 @@ class ListOfListsViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        Model.shared.loadPersistedListsFromDefaults()
+        //Model.shared.loadPersistedListsFromDefaults()
+    }
+    
+    
+    func didUpdateLists(snapshot: FIRDataSnapshot) {
+        
+        toDoLists.removeAll()
+        for item in snapshot.children {
+            let list = List(snapshot: item as! FIRDataSnapshot)
+            self.toDoLists.append(list)
+        }
+        print(toDoLists)
+    }
+    
+    // MARK: - FB Read
+    func listenForLists() {
+        
+        // queryOrdered(byChild: "completed")
+        let lists = FIRDatabase.database().reference(withPath: "lists")
+        lists.observe(.value, with: didUpdateLists)
+    }
+    
+    // MARK: - FB: Create, update, delete
+    func createList(title: String, description: String) {
+        
+        let notesRef = FIRDatabase.database().reference(withPath: "lists")
+        let note = Task(taskName: title, taskDescription: description, date: Date().format())
+        let noteRef = notesRef.child(title)
+        noteRef.setValue(lists.toAnyObject())
+    }
+    
+    func deleteList(list: List) {
+        
+        lists.ref?.removeValue()
+    }
+    
+    func updateList(newTitle: String, newDescription: String, lists: List) {
+        if lists.title == newTitle {
+            lists.ref?.updateChildValues([
+                "description": newDescription,
+                "date": Date().format()
+                ])
+        } else {
+            lists.ref?.removeValue()
+            createList(title: newTitle, description: description)
+        }
     }
     
 }

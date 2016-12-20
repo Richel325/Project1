@@ -33,7 +33,7 @@ class ListDetailViewController: UIViewController {
         
         ToDoItem.text = item.taskName
         item.taskDescription = ItemDescriptionDetail.text
-        Model.shared.persistListsToDefaults()
+        //Model.shared.persistListsToDefaults()
     }
     
     
