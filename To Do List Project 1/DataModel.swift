@@ -8,85 +8,64 @@
 
 import Foundation
 import UIKit
-
-class Model {
-    
-    static let shared = Model()
-    private init (){}
-    
-    let key = "persisted-list"
-    func persistListsToDefaults() {
-        let savedData = NSKeyedArchiver.archivedData(withRootObject: toDoLists)
-        UserDefaults.standard.set(savedData, forKey: key)
-    }
-    
-    func loadPersistedListsFromDefaults() {
-        if let savedData = UserDefaults.standard.object(forKey: key) as? Data {
-            let newToDoLists = NSKeyedUnarchiver.unarchiveObject(with: savedData) as! [List]
-            toDoLists = newToDoLists
-        }
-    }
-}
+import Firebase
 
 
-class List: NSObject, NSCoding {
-    
-    private struct Keys {
-        static let listName = "listName"
-        static let tasks = "tasks"
-    }
+
+class List {
     
     var listName: String
     var tasks = [Task]()
+    var ref: FIRDatabaseReference?
     
     init(listName: String) {
         self.listName = listName
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        listName = aDecoder.decodeObject(forKey: Keys.listName) as! String
-        tasks = aDecoder.decodeObject(forKey: Keys.tasks) as! [Task]
+    init(snapshot: FIRDataSnapshot) {
+        listName = snapshot.key
+        let snapshotValue = snapshot.value as! [String: AnyObject]
+        tasks = snapshotValue["tasks"] as! [AnyObject] as! [Task]
+        ref = snapshot.ref
     }
     
-    func encode(with aCoder: NSCoder) {
-        aCoder.encode(listName, forKey: Keys.listName)
-        aCoder.encode(tasks, forKey: Keys.tasks)
+    func toAnyObject() -> Any {
+        return [
+            "listNAme": listName,
+            "tasks": tasks
+        ]
     }
     
 }
+
 
 var toDoLists = [List]()
 
 
 
-class Task: NSObject, NSCoding {
-    
-    private struct Keys {
-        static let taskName = "taskName"
-        static let taskDescription = "taskDescription"
-    }
+class Task {
     
     var taskName: String
     var taskDescription: String
-    var date: String
-    
+    var ref: FIRDatabaseReference?
     
     init(taskName: String, taskDescription: String, date: String = "") {
         self.taskName = taskName
         self.taskDescription = taskDescription
-        self.date = date
     }
     
-    required convenience init?(coder aDecoder: NSCoder) {
-        self.init(
-            taskName: aDecoder.decodeObject(forKey: Keys.taskName) as! String,
-            taskDescription: aDecoder.decodeObject(forKey: Keys.taskDescription) as! String
-        )
+    init(snapshot: FIRDataSnapshot) {
+        taskName = snapshot.key
+        let snapshotValue = snapshot.value as! [String: AnyObject]
+        taskDescription = snapshotValue["taskDescription"] as! String
+        ref = snapshot.ref
     }
     
-    func encode(with aCoder: NSCoder) {
-        aCoder.encode(taskName, forKey: Keys.taskName)
-        aCoder.encode(taskDescription, forKey: Keys.taskDescription)
+    func toAnyObject() -> Any {
+        return [
+            "taskName": taskName,
+            "taskDescription": taskDescription
+        ]
     }
 }
 
