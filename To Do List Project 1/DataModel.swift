@@ -8,7 +8,6 @@
 
 import Foundation
 import UIKit
-import Firebase
 
 class Model {
     
@@ -53,6 +52,7 @@ class List: NSObject, NSCoding {
         aCoder.encode(listName, forKey: Keys.listName)
         aCoder.encode(tasks, forKey: Keys.tasks)
     }
+    
 }
 
 var toDoLists = [List]()
@@ -69,29 +69,13 @@ class Task: NSObject, NSCoding {
     var taskName: String
     var taskDescription: String
     var date: String
-    var ref: FIRDatabaseReference?
+    
     
     init(taskName: String, taskDescription: String, date: String = "") {
         self.taskName = taskName
         self.taskDescription = taskDescription
         self.date = date
     }
-    
-    init(snapshot: FIRDataSnapshot) {
-        taskName = snapshot.key
-        let snapshotValue = snapshot.value as! [String: AnyObject]
-        taskDescription = snapshotValue["taskDescription"] as! String
-        date = snapshotValue["date"] as! String
-        ref = snapshot.ref
-    }
-    
-    func toAnyObject() -> Any {
-        return [
-            "taskDescription": taskDescription,
-            "date": date
-        ]
-    }
-    
     
     required convenience init?(coder aDecoder: NSCoder) {
         self.init(
@@ -105,25 +89,4 @@ class Task: NSObject, NSCoding {
         aCoder.encode(taskDescription, forKey: Keys.taskDescription)
     }
 }
-
-
-
-
-extension Date {
-    
-    func format() -> String {
-        return Format.shared.dateFormatter.string(from: self)
-    }
-}
-
-class Format {
-    
-    static let shared = Format()
-    let dateFormatter = DateFormatter()
-    private init() {
-        dateFormatter.dateStyle = .long
-        dateFormatter.timeStyle = .long
-    }
-}
-
 
